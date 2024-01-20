@@ -24,13 +24,13 @@ export default function Home() {
 			</div>
 			<form
 				onSubmit={handleSubmit}
-				className="border border-gray-300 h-[40px] w-[315px] rounded-[6px] flex justify-between px-[12px]"
+				className="border border-gray-300 h-[40px] w-[315px] rounded-[6px] flex justify-between px-[12px] gap-[12px] sm:w-[500px]"
 			>
 				<input
 					ref={searchRef}
 					name="search"
 					type="text"
-					className="outline-none"
+					className="outline-none w-full"
 				/>
 				<button type="submit" className="text-teal-700">
 					<FaSearch size={20} />
