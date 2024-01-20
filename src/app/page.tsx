@@ -16,7 +16,7 @@ export default function Home() {
 
 	return (
 		<main className="grid place-content-center w-screen h-screen gap-[10px] p-[30px]">
-			<div className="text-teal-700 flex gap-[10px] items-center justify-center">
+			<div className="text-teal-700 flex gap-[9px] items-center justify-center">
 				<FaPlayCircle size={30} />
 				<span className="text-[30px]">
 					Cari<span className="font-semibold">FILM</span>
