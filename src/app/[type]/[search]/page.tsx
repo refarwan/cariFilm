@@ -21,7 +21,7 @@ const page = ({ params }: paramsType) => {
 			<main className="w-max mt-[91px] p-[25px] grid grid-cols-2 gap-[25px] m-auto sm:mt-[101px] sm:p-[40px] sm:grid-cols-3 xl:mt-[73px] xl:grid-cols-5 xl:gap-[40px]">
 				<Suspense
 					fallback={
-						<div className="text-gray-400 font-semibold text-[20px] text-center m-auto col-span-2">
+						<div className="text-gray-400 font-semibold text-[20px] text-center m-auto col-span-2 sm:col-span-3 xl:col-span-5">
 							Loding...
 						</div>
 					}

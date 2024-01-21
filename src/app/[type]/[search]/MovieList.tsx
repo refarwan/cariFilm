@@ -49,7 +49,7 @@ const MovieList = async ({ search, type = "all" }: propsType) => {
 					</div>
 				))
 			) : (
-				<p className="font-semibold text-[20px] text-gray-400 text-center">
+				<p className="font-semibold text-[20px] text-gray-400 text-center col-span-2 sm:col-span-3 xl:col-span-5">
 					Tidak ada data ditemukan
 				</p>
 			)}
