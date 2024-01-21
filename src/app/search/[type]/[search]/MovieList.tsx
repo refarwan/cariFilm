@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 import axios from "axios"
 import { FaFilm } from "react-icons/fa"
 
@@ -33,7 +35,11 @@ const MovieList = async ({ search, type = "all" }: propsType) => {
 		<>
 			{data.Response === "True" ? (
 				data.Search.map((item, index) => (
-					<div key={index} className="w-[150px] flex flex-col gap-[10px]">
+					<Link
+						href={`/detail/${item.imdbID}`}
+						key={index}
+						className="w-[150px] flex flex-col gap-[10px]"
+					>
 						{item.Poster && item.Poster !== "N/A" ? (
 							<img
 								className="w-[150px]"
@@ -46,7 +52,7 @@ const MovieList = async ({ search, type = "all" }: propsType) => {
 							</div>
 						)}
 						<span>{item.Title}</span>
-					</div>
+					</Link>
 				))
 			) : (
 				<p className="font-semibold text-[20px] text-gray-400 text-center col-span-2 sm:col-span-3 xl:col-span-5">

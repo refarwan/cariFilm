@@ -10,22 +10,22 @@ type searchType = "all" | "movie" | "series" | "game"
 
 const Header = ({
 	search,
-	showTypeOption,
 	searchType,
 }: {
 	search?: string
-	showTypeOption?: boolean
 	searchType?: searchType
 }) => {
-	const [searchState, setSearchState] = useState<string>(search ? search : "")
+	const [searchState, setSearchState] = useState<string>(
+		search ? decodeURIComponent(search) : ""
+	)
 	const router = useRouter()
 
 	const changeType = (type: searchType) => {
-		router.push(`/${type}/${search}`)
+		router.push(`/search/${type}/${search}`)
 	}
 
-	const changeSearch = (title: string) => {
-		router.push(`/${searchType}/${title}`)
+	const changeSearch = () => {
+		router.push(`/search/${searchType}/${searchState}`)
 	}
 
 	return (
@@ -47,42 +47,40 @@ const Header = ({
 					value={searchState}
 					onChange={(event) => setSearchState(event.target.value)}
 					onKeyUp={(event) => {
-						if (event.key === "Enter") changeSearch(searchState)
+						if (event.key === "Enter") changeSearch()
 					}}
 					className="outline-none w-full"
 				/>
-				<button type="button" className="text-teal-700">
+				<button type="button" onClick={changeSearch} className="text-teal-700">
 					<FaSearch size={15} className="" />
 				</button>
 			</div>
-			{showTypeOption ? (
-				<div className="text-[12px] flex gap-[17px] col-span-2 xl:text-[16px] xl:col-span-1 xl:order-2">
-					<button
-						onClick={() => changeType("all")}
-						className={searchType === "all" ? "font-bold text-teal-700" : ""}
-					>
-						All
-					</button>
-					<button
-						onClick={() => changeType("movie")}
-						className={searchType === "movie" ? "font-bold text-teal-700" : ""}
-					>
-						Movie
-					</button>
-					<button
-						onClick={() => changeType("series")}
-						className={searchType === "series" ? "font-bold text-teal-700" : ""}
-					>
-						Series
-					</button>
-					<button
-						onClick={() => changeType("game")}
-						className={searchType === "game" ? "font-bold text-teal-700" : ""}
-					>
-						Game
-					</button>
-				</div>
-			) : null}
+			<div className="text-[12px] flex gap-[17px] col-span-2 xl:text-[16px] xl:col-span-1 xl:order-2">
+				<button
+					onClick={() => changeType("all")}
+					className={searchType === "all" ? "font-bold text-teal-700" : ""}
+				>
+					All
+				</button>
+				<button
+					onClick={() => changeType("movie")}
+					className={searchType === "movie" ? "font-bold text-teal-700" : ""}
+				>
+					Movie
+				</button>
+				<button
+					onClick={() => changeType("series")}
+					className={searchType === "series" ? "font-bold text-teal-700" : ""}
+				>
+					Series
+				</button>
+				<button
+					onClick={() => changeType("game")}
+					className={searchType === "game" ? "font-bold text-teal-700" : ""}
+				>
+					Game
+				</button>
+			</div>
 		</header>
 	)
 }

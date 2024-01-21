@@ -1,6 +1,7 @@
 import { Suspense } from "react"
 
 import Header from "@/components/Header"
+import Loading from "@/components/Loading"
 import MovieList from "./MovieList"
 
 type paramsType = {
@@ -13,19 +14,9 @@ type paramsType = {
 const page = ({ params }: paramsType) => {
 	return (
 		<>
-			<Header
-				search={params.search}
-				showTypeOption={true}
-				searchType={params.type}
-			/>
+			<Header search={params.search} searchType={params.type} />
 			<main className="w-max mt-[91px] p-[25px] grid grid-cols-2 gap-[25px] m-auto sm:mt-[101px] sm:p-[40px] sm:grid-cols-3 xl:mt-[73px] xl:grid-cols-5 xl:gap-[40px]">
-				<Suspense
-					fallback={
-						<div className="text-gray-400 font-semibold text-[20px] text-center m-auto col-span-2 sm:col-span-3 xl:col-span-5">
-							Loding...
-						</div>
-					}
-				>
+				<Suspense fallback={<Loading />}>
 					<MovieList search={params.search} type={params.type} />
 				</Suspense>
 			</main>
