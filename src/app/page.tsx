@@ -11,7 +11,7 @@ export default function Home() {
 
 	const handleSubmit = (event: FormEvent) => {
 		event.preventDefault()
-		router.push(`search/all/${searchRef.current?.value}`)
+		router.push(`all/${searchRef.current?.value}`)
 	}
 
 	return (
